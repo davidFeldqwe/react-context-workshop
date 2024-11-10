@@ -1,12 +1,20 @@
-//make a context called UserContext and a context provider component.
-//the context should control the username
-//the values that are provided to the context should be: username, setUsername
+import { createContext, useContext, useState } from "react";
 
+const UserContext = createContext({});
 
+export const UserProvider = ({ children }) => {
+  const [user, setUser] = useState("");
 
-// 1: 👇create the Context
+  const changeUsername = (str) => {
+    if (typeof str !== "string") return;
+    setUser(str);
+  };
 
-// 2: 👇create the Provider Component 
+  return (
+    <UserContext.Provider value={{ user, changeUsername }}>
+      {children}
+    </UserContext.Provider>
+  );
+};
 
-
-// (recommended step): create custom hook 🤓
+export const useUser = () => useContext(UserContext);
