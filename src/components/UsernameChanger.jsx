@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { useUser } from "../context/UserContext";
+import { useTranslate } from "../hooks/useTranslate";
+import { useTheme } from "../context/ThemeContext";
 
 /**
  * This component should have an input and a button that changes the username to the input's value
@@ -6,25 +9,29 @@ import { useState } from "react";
  */
 const UsernameChanger = () => {
     const [text, setText] = useState("");
-    // 1. 👇 Create a function that will change the username
 
-    function changeUsername() {
-        // 🔥 Change the username
-    }
-
-    // 2. 🌟 Find the current language 
+    const { changeUsername } = useUser();
+    const { theme } = useTheme();
+    const translate = useTranslate();
 
     function handleChange(event) {
         setText(event.target.value);
     }
 
+    function handleSubmit(event) {
+        changeUsername(text);
+    }
+
+    const WHATS_YOUR_NAME = translate('whatYourName');
+    const CHANGE_USERNAME = translate("changeUsername");
+
     return (
         <div>
-            <span>What is your name?</span>
+            <span>{WHATS_YOUR_NAME}</span>
             <br /><br />
             <input value={text} onChange={handleChange} />
             <br /><br />
-            <button className={`${''}-theme-button clickable`} onClick={changeUsername}>change username</button>
+            <button className={`${theme}-theme-button clickable`} onClick={handleSubmit}>{CHANGE_USERNAME}</button>
         </div>
     );
 };
