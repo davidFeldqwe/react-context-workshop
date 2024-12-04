@@ -1,6 +1,7 @@
+import {FC} from "react"
 import ChangeLanguage from "./ChangeLanguage";
 
-const Buttons = () => {
+const Buttons:FC = () => {
     return (
         <div style={{ display: 'flex', direction: 'ltr' }}>
             <ChangeLanguage />

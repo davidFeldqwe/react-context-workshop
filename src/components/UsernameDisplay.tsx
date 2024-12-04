@@ -1,7 +1,8 @@
+import {FC} from "react"
 /**
  *  This component should render the current username
  */
-const UsernameDisplay = () => {
+const UsernameDisplay:FC = () => {
   // 👇 Find the current username and then show it
 
   return <div>{"Put here the username instead of this text"}</div>;
