@@ -5,11 +5,8 @@
 // Create functions in the context provider the toggle the language
 // The language should be Hebrew or English
 
-
-
 // 1: 👇create the Context
 
-// 2: 👇create the Provider Component 
-
+// 2: 👇create the Provider Component
 
 // (recommended step): create custom hook 🤓
